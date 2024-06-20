@@ -1,10 +1,9 @@
-Shader "Custom/Water" {
+Shader "Custom/Furr" {
 	Properties
 			{
 				_ShellColor ("Fur Color", Color) = (1,1,1,1)
-				_ShellLength ("Fur Length", Range(0.0, 1.0)) = 0.2
-				_ShellCount ("Shell Count", Range(1, 32)) = 255
-				_Thickness("Fur Thickness", Range(0.0, 1.0)) = 0.5
+				_ShellLength ("Fur Length", Range(0.0, 1.0)) = 0.08
+				_Thickness("Fur Thickness", Range(0.0, 1.0)) = 1.2
 			}
 	SubShader {
 		
@@ -52,6 +51,8 @@ Shader "Custom/Water" {
 			float _Density;  // This is the density of the strands, used for initializing the noise
 			float _NoiseMin, _NoiseMax; // This is the range of possible hair lengths, which the hash then interpolates between 
 			float _Thickness; // This is the thickness of the hair strand
+			float _Attenuation; // This is the exponent on the shell height for lighting calculations to fake ambient occlusion (the lack of ambient light)
+			float _OcclusionBias; // This is an additive constant on the ambient occlusion in order to make the lighting less harsh and maybe kind of fake in-scattering
 			float _ShellDistanceAttenuation; // This is the exponent on determining how far to push the shell outwards, which biases shells downwards or upwards towards the minimum/maximum distance covered
 			float3 _ShellColor; // The color of the shells (very complicated)
 			float3 _ShellDirection; // The direction the shells are going to point towards, this is updated by the CPU each frame based on user input/movement
@@ -168,14 +169,21 @@ Shader "Custom/Water" {
 				// Valve's half lambert squares the ndotl output, which is going to bring values down, once again you can see how this looks on desmos by graphing x^2
 				ndotl = ndotl * ndotl;
 
-				// In order to fake ambient occlusion, we take the normalized shell height and take it to an attenuation exponent, which will do the same exact thing
-				// I have explained that exponents will do to numbers between 0 and 1. A higher attenuation value means the occlusion of ambient light will become much stronger,
 				// as the number is brought down closer to 0, and if we multiply a color with 0 then it'll be black aka in shadow.
+				float ambientOcclusion = pow(h, _Attenuation);
 
+				// This is a additive bias on the ambient occlusion, if you don't want the gradient to go towards black then you can add a bit to this in order to prevent
+				// such a harsh gradient transition
+				ambientOcclusion += _OcclusionBias;
+
+				// Since the bias can push the ambient occlusion term above 1, we want to clamp it to 0 to 1 in order to prevent breaking the laws of physics by producing
+				// more light than was received since if you multiply a color with a number greater than 1, it'll become brighter, and that just physically does not make
+				// sense in this context
+				ambientOcclusion = saturate(ambientOcclusion);
 
 				// We put it all together down here by multiplying the color with Valve's half lambert and our fake ambient occlusion. You can remove some of these terms
 				// to see how it changes the lighting and shadowing.
-                return float4(_ShellColor * ndotl , 1.0);
+                return float4(_ShellColor * ndotl * ambientOcclusion, 1.0);
 			}
 
 			// This indicates the end of the CG code block
