@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 362765328}
-  - component: {fileID: 362765327}
   - component: {fileID: 362765329}
+  - component: {fileID: 362765330}
   m_Layer: 0
   m_Name: Shells (2)
   m_TagString: Untagged
@@ -141,30 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &362765327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362765326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  shellShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
-  updateStatics: 1
-  shellCount: 90
-  shellLength: 0.766
-  distanceAttenuation: 1.41
-  density: 165
-  noiseMin: 0.149
-  noiseMax: 0.9
-  thickness: 8.81
-  shellColor: {r: 0, g: 0.99215686, b: 0.076665886, a: 0}
-  occlusionAttenuation: 1.07
 --- !u!4 &362765328
 Transform:
   m_ObjectHideFlags: 0
@@ -193,6 +169,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 45
+--- !u!114 &362765330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362765326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
+  scrollbar: {fileID: 0}
+  sCount: 90
+  sLength: 0.766
+  density: 165
+  noiseMin: 0.149
+  noiseMax: 0.9
+  thickness: 8.81
+  shellColor: {r: 0, g: 0.9921569, b: 0.078431375, a: 0}
+  distAtt: 1.41
+  occAtt: 1.07
+  sMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,9 +388,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242511930}
-  - component: {fileID: 1242511929}
   - component: {fileID: 1242511931}
   - component: {fileID: 1242511932}
+  - component: {fileID: 1242511933}
   m_Layer: 0
   m_Name: Shells (1)
   m_TagString: Untagged
@@ -398,30 +398,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1242511929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242511928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  shellShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
-  updateStatics: 1
-  shellCount: 90
-  shellLength: 0.766
-  distanceAttenuation: 1.41
-  density: 165
-  noiseMin: 0.149
-  noiseMax: 0.9
-  thickness: 8.81
-  shellColor: {r: 0.99215686, g: 0, b: 0.025259135, a: 0}
-  occlusionAttenuation: 2.81
 --- !u!4 &1242511930
 Transform:
   m_ObjectHideFlags: 0
@@ -464,6 +440,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prevScene: first
   nextScene: cat
+--- !u!114 &1242511933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242511928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
+  scrollbar: {fileID: 0}
+  sCount: 90
+  sLength: 0.766
+  density: 165
+  noiseMin: 0.149
+  noiseMax: 0.9
+  thickness: 8.81
+  shellColor: {r: 1, g: 0, b: 0.023529414, a: 0}
+  distAtt: 1.41
+  occAtt: 2.81
+  sMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

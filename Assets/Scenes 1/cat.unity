@@ -318,9 +318,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242511930}
-  - component: {fileID: 1242511929}
   - component: {fileID: 1242511931}
   - component: {fileID: 1242511932}
+  - component: {fileID: 1242511933}
   m_Layer: 0
   m_Name: Shells (1)
   m_TagString: Untagged
@@ -328,30 +328,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1242511929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242511928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellMesh: {fileID: -3740500708424522155, guid: c50484680270dc84dafe7b514406b5ad, type: 3}
-  shellShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
-  updateStatics: 1
-  shellCount: 160
-  shellLength: 0.114
-  distanceAttenuation: 2.55
-  density: 1000
-  noiseMin: 0.259
-  noiseMax: 0.507
-  thickness: 5.87
-  shellColor: {r: 1, g: 0.5949938, b: 0, a: 0}
-  occlusionAttenuation: 0.65
 --- !u!4 &1242511930
 Transform:
   m_ObjectHideFlags: 0
@@ -394,6 +370,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prevScene: second
   nextScene: 
+--- !u!114 &1242511933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242511928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e1f48ed03b04c4dba2b9d3d63eee53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sShader: {fileID: 4800000, guid: ebce530a4f00d2f45a0afa93a5c575e0, type: 3}
+  scrollbar: {fileID: 0}
+  sCount: 160
+  sLength: 0.111
+  density: 2000
+  noiseMin: 0.259
+  noiseMax: 0.507
+  thickness: 5.87
+  shellColor: {r: 1, g: 0.59607846, b: 0, a: 0}
+  distAtt: 2.55
+  occAtt: 0.65
+  sMesh: {fileID: -3740500708424522155, guid: c50484680270dc84dafe7b514406b5ad, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
